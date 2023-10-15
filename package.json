@@ -23,7 +23,7 @@
     "build-storybook": "storybook build",
     "deploy-storybook": "storybook-to-ghpages",
     "release": "pnpm build && pnpm release-it",
-    "link:self": "pnpm yalc publish && pnpm link"
+    "link:self": "pnpm yalc publish && npm link"
   },
   "tsup": {
     "entry": [
