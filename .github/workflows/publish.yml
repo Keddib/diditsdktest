@@ -8,34 +8,23 @@ on:
     types: [published]
 
 jobs:
-  publish:
+  publish-npm:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
         with:
-          fetch-depth: 0
-
-      - name: setup pnpm
-        uses: pnpm/action-setup@v2
+          version: 7
+      - uses: actions/setup-node@v3
         with:
-          version: 8
-
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
           cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build and publish to npm
-        run: |
-          pnpm lint
-          pnpm test
-          pnpm build
-          npm publish
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
+      - run: npm publish
         env:
-          NPM_CONFIG_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.DIDITPROVIDERTEST2}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
