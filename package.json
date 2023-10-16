@@ -7,7 +7,7 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Keddib/diditsdktest.git"
+    "url": "git+https://github.com/Keddib/diditsdktest.git"
   },
   "scripts": {
     "dev": "concurrently \"pnpm build --watch\" \"pnpm test\" ",
