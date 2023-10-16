@@ -40,9 +40,6 @@ jobs:
       - name: Run tests
         run: pnpm test:ci
 
-      - name: Build storybook
-        run: pnpm build-storybook
-
       - name: Build package
         run: pnpm build
 
